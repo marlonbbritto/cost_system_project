@@ -1,12 +1,11 @@
 package com.costSystemProject.api.domain.employee;
 
+import com.costSystemProject.api.domain.employeeAllocation.EmployeeAllocation;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Table(name = "tb_employee")
@@ -15,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Employee {
     @Id
     @GeneratedValue
@@ -33,6 +33,9 @@ public class Employee {
     private Double valueOfBenefitsCard;
     private Double valueOfHealthPlans;
     private Double valueOfOtherBenefits;
+    @OneToMany
+    @Builder.Default
+    private List<EmployeeAllocation> allocations = List.of();
 
 
 }
