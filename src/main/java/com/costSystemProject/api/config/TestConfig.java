@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -46,9 +47,10 @@ public class TestConfig implements CommandLineRunner {
 
         EmployeeAllocation ea1 = new EmployeeAllocation(null,e1, YearMonth.now(),100.00);
 
-        e1.setAllocations(List.of(ea1));
+        e1.setAllocations(new ArrayList<>(List.of(ea1)));
+
 
         employeeRepository.save(e1);
-        employeeAllocationRepository.save(ea1);
+
     }
 }

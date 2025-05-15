@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,9 +34,9 @@ public class Employee {
     private Double valueOfBenefitsCard;
     private Double valueOfHealthPlans;
     private Double valueOfOtherBenefits;
-    @OneToMany
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<EmployeeAllocation> allocations = List.of();
+    private List<EmployeeAllocation> allocations = new  ArrayList<>();
 
 
 }

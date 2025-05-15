@@ -26,6 +26,6 @@ public class EmployeeAllocation {
     @JoinColumn(name = "employee_id")
     @JsonIgnore
     private Employee employee;
-    private YearMonth month;
+    private YearMonth monthAllocation;
     private Double percentage;
 }
