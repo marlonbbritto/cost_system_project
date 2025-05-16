@@ -1,6 +1,7 @@
 package com.costSystemProject.api.controller;
 
 import com.costSystemProject.api.domain.employee.Employee;
+import com.costSystemProject.api.dto.EmployeeDto;
 import com.costSystemProject.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<Employee>> findAll(){
-        List<Employee> employeeList = employeeService.findAll();
-        return ResponseEntity.ok().body(employeeList);
+    public ResponseEntity<List<EmployeeDto>> findAll(){
+        List<EmployeeDto> employeeDtoList = employeeService.findAll();
+        return ResponseEntity.ok().body(employeeDtoList);
     }
 }
