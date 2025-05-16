@@ -2,6 +2,7 @@ package com.costSystemProject.api.controller;
 
 import com.costSystemProject.api.domain.costCenter.CostCenter;
 import com.costSystemProject.api.domain.employee.Employee;
+import com.costSystemProject.api.dto.CostCenterDto;
 import com.costSystemProject.api.service.CostCenterService;
 import com.costSystemProject.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class CostCenterController {
     private CostCenterService costCenterService;
 
     @GetMapping
-    public ResponseEntity<List<CostCenter>> findAll(){
-        List<CostCenter> costCenterList = costCenterService.findAll();
+    public ResponseEntity<List<CostCenterDto>> findAll(){
+        List<CostCenterDto> costCenterList = costCenterService.findAll();
         return ResponseEntity.ok().body(costCenterList);
     }
 }

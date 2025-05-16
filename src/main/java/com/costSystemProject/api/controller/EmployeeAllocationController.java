@@ -22,7 +22,7 @@ public class EmployeeAllocationController {
 
     @GetMapping
     public ResponseEntity<List<EmployeeAllocationDto>> findAll(){
-        List<EmployeeAllocationDto> employeeAllocationDtoListList = employeeAllocationService.findAll();
-        return ResponseEntity.ok().body(employeeAllocationDtoListList);
+        List<EmployeeAllocationDto> employeeAllocationDtoList = employeeAllocationService.findAll();
+        return ResponseEntity.ok().body(employeeAllocationDtoList);
     }
 }
