@@ -7,9 +7,7 @@ import com.costSystemProject.api.service.CostCenterService;
 import com.costSystemProject.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +23,6 @@ public class CostCenterController {
         List<CostCenterDto> costCenterList = costCenterService.findAll();
         return ResponseEntity.ok().body(costCenterList);
     }
+
+
 }
