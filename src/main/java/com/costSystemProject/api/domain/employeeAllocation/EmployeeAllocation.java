@@ -1,5 +1,6 @@
 package com.costSystemProject.api.domain.employeeAllocation;
 
+import com.costSystemProject.api.domain.costCenter.CostCenter;
 import com.costSystemProject.api.domain.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -28,4 +29,9 @@ public class EmployeeAllocation {
     private Employee employee;
     private YearMonth monthAllocation;
     private Double percentage;
+    @ManyToOne
+    @JoinColumn(name = "cost_center_id")
+    @JsonIgnore
+    private CostCenter costCenter;
+
 }

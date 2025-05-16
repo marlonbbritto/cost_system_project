@@ -1,10 +1,12 @@
 package com.costSystemProject.api.config;
 
+import com.costSystemProject.api.domain.costCenter.CostCenter;
 import com.costSystemProject.api.domain.employee.Employee;
 import com.costSystemProject.api.domain.employee.Level;
 import com.costSystemProject.api.domain.employee.Position;
 import com.costSystemProject.api.domain.employee.TypeOfContract;
 import com.costSystemProject.api.domain.employeeAllocation.EmployeeAllocation;
+import com.costSystemProject.api.repository.CostCenterRepository;
 import com.costSystemProject.api.repository.EmployeeAllocationRepository;
 import com.costSystemProject.api.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,11 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private EmployeeAllocationRepository employeeAllocationRepository;
 
+    @Autowired
+    private CostCenterRepository costCenterRepository;
+
     @Override
     public void run(String... args) throws Exception {
-
-
 
         Employee e1 = Employee.builder()
                 .name("João Silva")
@@ -45,11 +48,17 @@ public class TestConfig implements CommandLineRunner {
                 .valueOfOtherBenefits(0.00)
                 .build();
 
-        EmployeeAllocation ea1 = new EmployeeAllocation(null,e1, YearMonth.now(),100.00);
+        CostCenter c1 = CostCenter.builder()
+                .name("Projeto_Teste")
+                .description("Projeto de transformação digital")
+                .build();
+
+        EmployeeAllocation ea1 = new EmployeeAllocation(null,e1, YearMonth.now(),100.00,c1);
 
         e1.setAllocations(new ArrayList<>(List.of(ea1)));
+        c1.setEmployeeAllocationList(new ArrayList<>(List.of(ea1)));
 
-
+        costCenterRepository.save(c1);
         employeeRepository.save(e1);
 
     }
