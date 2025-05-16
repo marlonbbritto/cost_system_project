@@ -2,6 +2,7 @@ package com.costSystemProject.api.controller;
 
 import com.costSystemProject.api.domain.employee.Employee;
 import com.costSystemProject.api.domain.employeeAllocation.EmployeeAllocation;
+import com.costSystemProject.api.dto.EmployeeAllocationDto;
 import com.costSystemProject.api.service.EmployeeAllocationService;
 import com.costSystemProject.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class EmployeeAllocationController {
     private EmployeeAllocationService employeeAllocationService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeAllocation>> findAll(){
-        List<EmployeeAllocation> employeeAllocationList = employeeAllocationService.findAll();
-        return ResponseEntity.ok().body(employeeAllocationList);
+    public ResponseEntity<List<EmployeeAllocationDto>> findAll(){
+        List<EmployeeAllocationDto> employeeAllocationDtoListList = employeeAllocationService.findAll();
+        return ResponseEntity.ok().body(employeeAllocationDtoListList);
     }
 }
