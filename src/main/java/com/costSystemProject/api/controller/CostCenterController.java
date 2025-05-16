@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/cost_center")
@@ -22,6 +23,11 @@ public class CostCenterController {
     public ResponseEntity<List<CostCenterDto>> findAll(){
         List<CostCenterDto> costCenterList = costCenterService.findAll();
         return ResponseEntity.ok().body(costCenterList);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CostCenterDto> findById(@PathVariable UUID id){
+        return costCenterService.findById(id);
     }
 
 
