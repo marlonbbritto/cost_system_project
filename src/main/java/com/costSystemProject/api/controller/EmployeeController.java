@@ -34,4 +34,9 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> insert(@RequestBody @Valid EmployeeInsertDto employeeInsertDto){
         return employeeService.insert(employeeInsertDto);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id){
+        return employeeService.delete(id);
+    }
 }

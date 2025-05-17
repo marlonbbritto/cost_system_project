@@ -46,6 +46,14 @@ public class EmployeeService {
         return ResponseEntity.created(uri).body(employeeDto);
     }
 
+    public ResponseEntity<Void> delete(UUID id){
+        if (!employeeRepository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+        employeeRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
     private EmployeeDto convertToDto(Employee employee){
         return new  EmployeeDto(
                 employee.getId(),
